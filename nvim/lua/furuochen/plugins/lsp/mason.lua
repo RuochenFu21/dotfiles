@@ -13,7 +13,7 @@ return {
     dependencies = { "williamboman/mason.nvim" },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "basedpyright" },  -- automatically install Pyright
+        ensure_installed = { "basedpyright", "lua_ls" }, -- automatically install Pyright
         automatic_installation = true,
       })
     end,
@@ -68,4 +68,3 @@ return {
     end,
   },
 }
-
