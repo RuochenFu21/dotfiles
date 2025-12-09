@@ -218,4 +218,4 @@ on-mode-changed = []
     alt-k = ['join-with up', 'mode main']
     alt-l = ['join-with right', 'mode main']
     
-    alt-o = ['exec-and-forget open -na Kitty', 'mode main']
+    alt-o = ['exec-and-forget /opt/homebrew/bin/kitty --single-instance -d ~', 'mode main']
