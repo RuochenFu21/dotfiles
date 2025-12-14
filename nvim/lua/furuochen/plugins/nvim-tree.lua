@@ -79,6 +79,7 @@ return {
         vim.keymap.set('n', '<Esc>', preview.unwatch, opts 'Close Preview/Unwatch')
         vim.keymap.set('n', '<C-j>', function() return preview.scroll(4) end, opts 'Scroll Down')
         vim.keymap.set('n', '<C-k>', function() return preview.scroll(-4) end, opts 'Scroll Up')
+        vim.keymap.set('n', 'l', api.node.open.edit, opts 'Open')
 
         -- Option A: Smart tab behavior: Only preview files, expand/collapse directories (recommended)
         vim.keymap.set('n', '<Tab>', function()
