@@ -1,0 +1,8 @@
+[tasks]
+image_bound = [ 65535, 65535 ]
+
+
+[preview]
+max_width = 10000
+max_height = 10000
+# ... other settings
