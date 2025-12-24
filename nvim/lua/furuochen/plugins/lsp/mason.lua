@@ -1,30 +1,38 @@
 return {
-  -- Mason: installs external tools (LSPs, linters, DAPs)
   {
-    "williamboman/mason.nvim",
-    config = function()
-      require("mason").setup()
-    end,
+    'neovim/nvim-lspconfig',
+    dependencies = { 'saghen/blink.cmp' },
   },
-
-  -- Mason + LSP integration
   {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim" },
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = { "basedpyright", "lua_ls" }, -- automatically install Pyright
-        automatic_installation = true,
-      })
-    end,
+    "mason-org/mason.nvim",
+    opts = {
+      ui = {
+        icons = {
+          package_installed = "✓",
+          package_pending = "➜",
+          package_uninstalled = "✗"
+        }
+      }
+    }
   },
-
-  -- Neovim 0.11 LSP setup
   {
-    "neovim/nvim-lspconfig",
-    dependencies = { "williamboman/mason-lspconfig.nvim" },
-    config = function()
-      -- Auto-start Pyright for Python files
-    end,
+    'williamboman/mason-lspconfig.nvim',
+    opts = {
+      automatic_enable = {
+        exclude = {
+          --needs external plugin
+          'jdtls'
+        }
+      }
+    }
+  },
+  { 'Decodetalkers/csharpls-extended-lsp.nvim' },
+  { 'mfussenegger/nvim-jdtls' },
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+    opts = {
+      file_types = { 'markdown', 'copilot-chat' },
+    },
   },
 }
