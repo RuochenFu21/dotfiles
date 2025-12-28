@@ -33,7 +33,12 @@ function M:setup()
     -- for a list of options
     settings = {
       java = {
-      }
+        configuration = {
+        },
+        symbols = {
+          includeSourceMethodDeclarations = true,
+        },
+      },
     },
 
 
