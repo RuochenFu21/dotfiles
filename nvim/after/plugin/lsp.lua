@@ -127,3 +127,16 @@ vim.api.nvim_create_autocmd('FileType', {
     require 'furuochen.core.jdtls_setup'.setup()
   end
 })
+
+vim.api.nvim_create_autocmd('VimEnter', {
+  pattern = '*',
+  callback = function(args)
+    if vim.fn.filereadable("gradlew") == 1
+        or vim.fn.filereadable("build.gradle") == 1
+        or vim.fn.filereadable("settings.gradle") == 1
+    then
+      print("Initializing JDTLS")
+      require 'furuochen.core.jdtls_setup'.setup()
+    end
+  end
+})

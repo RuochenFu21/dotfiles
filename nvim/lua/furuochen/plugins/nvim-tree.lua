@@ -73,14 +73,46 @@ return {
           return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
         end
 
+        local function edit_or_open()
+          local node = api.tree.get_node_under_cursor()
+
+          if node.nodes ~= nil then
+            -- expand or collapse folder
+            api.node.open.edit()
+          else
+            -- open file
+            api.node.open.edit()
+            -- Close the tree if file was opened
+            api.tree.close()
+          end
+        end
+
+        -- open as vsplit on current node
+        local function vsplit_preview()
+          local node = api.tree.get_node_under_cursor()
+
+          if node.nodes ~= nil then
+            -- expand or collapse folder
+            api.node.open.edit()
+          else
+            -- open file as vsplit
+            api.node.open.vertical()
+          end
+
+          -- Finally refocus on tree if it was lost
+          api.tree.focus()
+        end
         local preview = require('nvim-tree-preview')
 
         vim.keymap.set('n', 'P', preview.watch, opts 'Preview (Watch)')
         vim.keymap.set('n', '<Esc>', preview.unwatch, opts 'Close Preview/Unwatch')
         vim.keymap.set('n', '<C-j>', function() return preview.scroll(4) end, opts 'Scroll Down')
         vim.keymap.set('n', '<C-k>', function() return preview.scroll(-4) end, opts 'Scroll Up')
-        vim.keymap.set('n', 'l', api.node.open.edit, opts 'Open')
 
+        vim.keymap.set("n", "l", edit_or_open, opts("Edit Or Open"))
+        vim.keymap.set("n", "L", vsplit_preview, opts("Vsplit Preview"))
+        vim.keymap.set("n", "h", api.tree.close, opts("Close"))
+        vim.keymap.set("n", "H", api.tree.collapse_all, opts("Collapse All"))
         -- Option A: Smart tab behavior: Only preview files, expand/collapse directories (recommended)
         vim.keymap.set('n', '<Tab>', function()
           local ok, node = pcall(api.tree.get_node_under_cursor)
@@ -92,9 +124,29 @@ return {
             end
           end
         end, opts 'Preview')
+        function find_directory_and_focus()
+          local actions = require("telescope.actions")
+          local action_state = require("telescope.actions.state")
 
-        -- Option B: Simple tab behavior: Always preview
-        -- vim.keymap.set('n', '<Tab>', preview.node_under_cursor, opts 'Preview')
+          local function open_nvim_tree(prompt_bufnr, _)
+            actions.select_default:replace(function()
+              local api = require("nvim-tree.api")
+
+              actions.close(prompt_bufnr)
+              local selection = action_state.get_selected_entry()
+              api.tree.open()
+              api.tree.find_file(selection.cwd .. "/" .. selection.value)
+            end)
+            return true
+          end
+
+          require("telescope.builtin").find_files({
+            find_command = { "fd", "--type", "directory", "--hidden", "--exclude", ".git/*" },
+            attach_mappings = open_nvim_tree,
+          })
+        end
+
+        vim.keymap.set("n", "fd", find_directory_and_focus)
       end,
     })
 
