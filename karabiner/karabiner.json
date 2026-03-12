@@ -1,0 +1,46 @@
+{
+    "profiles": [
+        {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "F13 → English | F14 → Chinese | F15 → Japanese",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "f13" },
+                                "to": [{ "select_input_source": { "input_source_id": "com.apple.keylayout.ABC" } }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": { "key_code": "f14" },
+                                "to": [{ "select_input_source": { "input_source_id": "com.apple.inputmethod.SCIM.ITABC" } }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": { "key_code": "f15" },
+                                "to": [{ "select_input_source": { "input_source_id": "com.apple.inputmethod.Kotoeri.RomajiTyping.Japanese" } }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 24926,
+                        "vendor_id": 7504
+                    },
+                    "ignore": false,
+                    "ignore_vendor_events": true,
+                    "manipulate_caps_lock_led": false
+                }
+            ],
+            "name": "Default profile",
+            "selected": true,
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+        }
+    ]
+}

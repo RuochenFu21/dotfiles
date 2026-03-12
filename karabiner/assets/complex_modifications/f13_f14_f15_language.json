@@ -1,0 +1,43 @@
+{
+  "title": "F13/F14/F15 switch input source",
+  "rules": [
+    {
+      "description": "F13 → English | F14 → Chinese | F15 → Japanese",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "f13" },
+          "to": [
+            {
+              "select_input_source": {
+                "input_source_id": "com.apple.keylayout.ABC"
+              }
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "f14" },
+          "to": [
+            {
+              "select_input_source": {
+                "input_source_id": "com.apple.inputmethod.SCIM.ITABC"
+              }
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "f15" },
+          "to": [
+            {
+              "select_input_source": {
+                "input_source_id": "com.apple.inputmethod.Kotoeri.RomajiTyping.Japanese"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

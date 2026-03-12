@@ -121,3 +121,4 @@ function y() {
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
+export PATH="/opt/homebrew/opt/rustup/bin:$PATH"

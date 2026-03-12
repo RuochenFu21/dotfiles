@@ -56,7 +56,7 @@ return {
         },
       },
       filters = {
-        custom = { ".DS_Store" },
+        custom = { ".DS_Store", ".git" },
       },
       git = {
         ignore = false,
@@ -111,7 +111,7 @@ return {
 
         vim.keymap.set("n", "l", edit_or_open, opts("Edit Or Open"))
         vim.keymap.set("n", "L", vsplit_preview, opts("Vsplit Preview"))
-        vim.keymap.set("n", "h", api.tree.close, opts("Close"))
+        vim.keymap.set("n", "h", api.node.navigate.parent, opts("Close"))
         vim.keymap.set("n", "H", api.tree.collapse_all, opts("Collapse All"))
         -- Option A: Smart tab behavior: Only preview files, expand/collapse directories (recommended)
         vim.keymap.set('n', '<Tab>', function()

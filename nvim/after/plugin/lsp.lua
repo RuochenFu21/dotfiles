@@ -131,6 +131,7 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_create_autocmd('VimEnter', {
   pattern = '*',
   callback = function(args)
+    require("nvim-tree.api").tree.open()
     if vim.fn.filereadable("gradlew") == 1
         or vim.fn.filereadable("build.gradle") == 1
         or vim.fn.filereadable("settings.gradle") == 1
