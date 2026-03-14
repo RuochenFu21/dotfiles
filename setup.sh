@@ -7,3 +7,5 @@ cd ~/.config
 brew bundle
 
 ln ~/.config/zsh/.zshrc ~/.zshrc
+
+defaults write com.apple.dock expose-group-apps -bool true && killall Dock
