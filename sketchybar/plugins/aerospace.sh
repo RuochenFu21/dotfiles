@@ -35,6 +35,8 @@ app_icon() {
     Zoom)                                             echo "󰊾" ;;
     WeChat)                                           echo "" ;;
     QQ)                                               echo "" ;;
+    Reminders)                                        echo "" ;;
+    Messages)                                         echo "󰭹" ;; 
     *)                                                echo "󰘔" ;;
   esac
 }
