@@ -14,10 +14,6 @@ brew "gh"
 brew "gradle"
 # Rime Input Method Engine
 brew "librime"
-# Clone of ls with colorful output, file type icons, and more
-brew "lsd"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Development kit for the Java programming language

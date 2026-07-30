@@ -8,3 +8,5 @@ brew "zsh-syntax-highlighting"
 
 brew "starship"
 
+brew "lsd"
+
