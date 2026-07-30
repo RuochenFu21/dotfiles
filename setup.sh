@@ -1,3 +1,5 @@
+set -euo pipefail
+
 # Install brew
 
 which -s brew
@@ -32,9 +34,9 @@ fi
 cd ~/.config
 
 
-# Brew install 
+read -rp "Profile (work/personal, blank for base only): " profile
 
-brew bundle --no-upgrade
+cat Brewfile.base ${profile:+Brewfile.$profile} | brew bundle --file=-
 
 
 # zshrc
