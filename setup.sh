@@ -33,11 +33,7 @@ fi
 
 cd ~/.config
 
-
-read -rp "Profile (work/personal, blank for base only): " profile
-
-cat Brewfile.base ${profile:+Brewfile.$profile} | brew bundle --file=-
-
+bash .brew-update.sh
 
 # zshrc
 
