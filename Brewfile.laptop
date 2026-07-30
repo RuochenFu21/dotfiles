@@ -38,12 +38,6 @@ brew "starship"
 brew "typst"
 # Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
-# Tracks most-used directories to make cd smarter
-brew "z"
-# Fish-like fast/unobtrusive autosuggestions for zsh
-brew "zsh-autosuggestions"
-# Fish shell like syntax highlighting for zsh
-brew "zsh-syntax-highlighting"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
 # Collection of apps and services for photography, design, video, web, and UX

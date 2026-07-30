@@ -1,1 +1,10 @@
 brew "neovim"
+
+brew "z"
+
+brew "zsh-autosuggestions"
+
+brew "zsh-syntax-highlighting"
+
+brew "starship"
+
